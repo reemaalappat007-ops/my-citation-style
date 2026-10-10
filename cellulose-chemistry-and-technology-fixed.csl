@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" default-locale="en-US">
+  <info>
+    <title>Cellulose Chemistry and Technology - Custom</title>
+    <id>https://raw.githubusercontent.com/reemaalappat007-ops/my-citation-style/main/cellulose-chemistry-and-technology-fixed.csl</id>
+    <link href="https://raw.githubusercontent.com/reemaalappat007-ops/my-citation-style/main/cellulose-chemistry-and-technology-fixed.csl" rel="self"/>
+    <category citation-format="numeric"/>
+    <updated>2026-10-10T00:00:00+00:00</updated>
+    <summary>Numbered superscript citations and bibliography, author initials before surnames, abbreviated italic journal, bold volume, first page and year at end.</summary>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name form="long" initialize="true" initialize-with=". " and="text" delimiter=", " delimiter-precedes-last="never" et-al-min="6" et-al-use-first="5" delimiter-precedes-et-al="always"/>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="year">
+    <date variable="issued"><date-part name="year"/></date>
+  </macro>
+  <macro name="journal-details">
+    <group delimiter=", ">
+      <text variable="container-title" form="short" font-style="italic"/>
+      <text variable="volume" font-weight="bold"/>
+      <text variable="page-first"/>
+    </group>
+  </macro>
+  <macro name="publication">
+    <choose>
+      <if type="article-journal">
+        <group delimiter=" ">
+          <text macro="journal-details"/>
+          <text macro="year" prefix="(" suffix=")"/>
+        </group>
+      </if>
+      <else-if type="book">
+        <group delimiter=", ">
+          <text variable="title" font-style="italic"/>
+          <text variable="publisher"/>
+          <text macro="year" prefix="(" suffix=")"/>
+        </group>
+      </else-if>
+      <else>
+        <group delimiter=", ">
+          <text variable="title"/>
+          <text variable="container-title" font-style="italic"/>
+          <text macro="year" prefix="(" suffix=")"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort><key variable="citation-number"/></sort>
+    <layout delimiter="," vertical-align="sup">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography>
+    <layout suffix=".">
+      <text variable="citation-number" vertical-align="sup" suffix=" "/>
+      <group delimiter=", ">
+        <text macro="author"/>
+        <text macro="publication"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>
