@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <!-- This style was edited with the Visual CSL Editor (https://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Cellulose Chemistry and Technology - DOI v2</title>
+    <title-short>CCT with DOI</title-short>
+    <id>https://raw.githubusercontent.com/reemaalappat007-ops/my-citation-style/main/cellulose-chemistry-technology-doi-v2.csl</id>
+    <link href="https://raw.githubusercontent.com/reemaalappat007-ops/my-citation-style/main/cellulose-chemistry-technology-doi-v2.csl" rel="self"/>
+    <author>
+      <name>Patrick O'Brien</name>
+      <email>obrienpat86@gmail.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <updated>2026-10-10T09:30:29+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term name="accessed">last accessed</term>
+      <term name="available at">available from</term>
+    </terms>
+  </locale>
+  <macro name="editor">
+    <names variable="editor" delimiter=", ">
+      <name initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" strip-periods="true" prefix=". "/>
+    </names>
+  </macro>
+  <macro name="anon">
+    <text term="anonymous" text-case="capitalize-first" strip-periods="false"/>
+  </macro>
+  <macro name="volume-booklike">
+    <group delimiter=" ">
+      <text variable="collection-title" text-case="title"/>
+      <text variable="collection-number"/>
+    </group>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter-precedes-et-al="always" delimiter-precedes-last="never" et-al-min="6" et-al-use-first="5" initialize-with=". " sort-separator=" "/>
+      <et-al font-style="italic"/>
+    <label form="short" strip-periods="true" prefix=", (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <text macro="anon"/>
+      </substitute>
+      </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="DOI">
+        <text variable="DOI" prefix="; doi: "/>
+      </if>
+      <else-if type="webpage post post-weblog" match="any">
+        <group delimiter=" " prefix=". ">
+          <group delimiter=": ">
+            <text term="available at" text-case="capitalize-first"/>
+            <text variable="URL"/>
+          </group>
+          <group delimiter=": " prefix="[" suffix="]">
+            <text term="accessed" text-case="capitalize-first"/>
+            <date variable="accessed">
+              <date-part name="month" form="numeric" suffix="/"/>
+              <date-part name="day" suffix="/"/>
+              <date-part name="year"/>
+            </date>
+          </group>
+        </group>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="article-journal" match="none">
+        <text variable="title" text-case="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter="; ">
+      <group delimiter=": ">
+        <text variable="publisher"/>
+        <text variable="publisher-place"/>
+      </group>
+      <text macro="year-date"/>
+    </group>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="pages">
+    <text variable="page-first" font-variant="normal" font-weight="normal"/>
+  </macro>
+  <macro name="refpages">
+    <group delimiter=" ">
+      <label variable="page" form="short"/>
+      <text variable="page"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" suffix="."/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout vertical-align="sup" delimiter=",">
+      <text variable="citation-number" vertical-align="sup"/>
+    </layout>
+  </citation>
+  <bibliography>
+    <layout suffix="." delimiter=" ">
+      <text variable="citation-number" vertical-align="sup" suffix=" "/>
+      <group delimiter=", ">
+        <text macro="author"/>
+        <choose>
+          <if type="article-journal">
+            <group delimiter="">
+              <text variable="container-title" form="short" font-style="italic"/>
+              <text variable="volume" font-weight="bold" prefix=", "/>
+              <text variable="page-first" prefix=", "/>
+              <date variable="issued" prefix=" (" suffix=")">
+                <date-part name="year"/>
+              </date>
+            </group>
+          </if>
+          <else>
+            <group delimiter=", ">
+              <text variable="title" font-style="italic"/>
+              <text variable="publisher"/>
+              <date variable="issued" prefix="(" suffix=")">
+                <date-part name="year"/>
+              </date>
+            </group>
+          </else>
+        </choose>
+      </group>
+      <choose>
+        <if variable="DOI">
+          <text variable="DOI" prefix="https://doi.org/"/>
+        </if>
+        <else-if variable="URL">
+          <text variable="URL"/>
+        </else-if>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
