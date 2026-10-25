@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" default-locale="en-US">
+  <info>
+    <title>Cellulose Chemistry and Technology - DOI Clean</title>
+    <id>https://raw.githubusercontent.com/reemaalappat007-ops/my-citation-style/main/cellulose-chemistry-technology-doi-clean.csl</id>
+    <link href="https://raw.githubusercontent.com/reemaalappat007-ops/my-citation-style/main/cellulose-chemistry-technology-doi-clean.csl" rel="self"/>
+    <author><name>Custom journal citation style</name></author>
+    <category citation-format="numeric"/>
+    <updated>2026-10-25T00:00:00+00:00</updated>
+  </info>
+  <macro name="authors">
+    <names variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-last="never" delimiter-precedes-et-al="always" initialize-with=". " et-al-min="6" et-al-use-first="5"/>
+      <et-al font-style="italic"/>
+      <substitute><names variable="editor"/></substitute>
+    </names>
+  </macro>
+  <macro name="year">
+    <date variable="issued" prefix=" (" suffix=")"><date-part name="year"/></date>
+  </macro>
+  <macro name="link">
+    <choose>
+      <if variable="DOI"><text variable="DOI" prefix="https://doi.org/"/></if>
+      <else-if variable="URL"><text variable="URL"/></else-if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort><key variable="citation-number"/></sort>
+    <layout delimiter=", "><text variable="citation-number" vertical-align="sup"/></layout>
+  </citation>
+  <bibliography et-al-min="6" et-al-use-first="5">
+    <layout suffix=".">
+      <text variable="citation-number" vertical-align="sup" suffix=" "/>
+      <group delimiter=", ">
+        <text macro="authors"/>
+        <choose>
+          <if type="article-journal">
+            <group delimiter="">
+              <text variable="container-title" form="short" font-style="italic"/>
+              <text variable="volume" font-weight="bold" prefix=", "/>
+              <text variable="page-first" prefix=", "/>
+              <text macro="year"/>
+            </group>
+          </if>
+          <else>
+            <group delimiter=", ">
+              <text variable="title" font-style="italic"/>
+              <text variable="publisher"/>
+              <text macro="year"/>
+            </group>
+          </else>
+        </choose>
+      </group>
+      <text macro="link" prefix=". "/>
+    </layout>
+  </bibliography>
+</style>
